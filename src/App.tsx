@@ -12,7 +12,7 @@ type AppState = {
 };
 
 export default class App extends React.Component<Record<string, never>, AppState> {
-  private readonly API_URL = 'http://localhost:7070/notes';
+  private readonly API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:7070/notes';
 
   state: AppState = {
     notes: [],
@@ -36,7 +36,12 @@ export default class App extends React.Component<Record<string, never>, AppState
       const data: Note[] = await res.json();
       this.setState({ notes: data, loading: false });
     } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Unknown error';
+      const isProd = import.meta.env.PROD;
+      const message =
+        isProd
+          ? 'Backend недоступен. GitHub Pages хостит только фронтенд — запустите backend локально (http://localhost:7070) или задеплойте его и укажите VITE_API_URL.'
+          : (e instanceof Error ? e.message : 'Unknown error');
+
       this.setState({ error: message, loading: false });
     }
   };

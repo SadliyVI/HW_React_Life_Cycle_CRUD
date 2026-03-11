@@ -5,7 +5,9 @@
 [![Deploy to GitHub Pages](https://github.com/SadliyVI/HW_React_Life_Cycle_CRUD/actions/workflows/main.yml/badge.svg)](https://github.com/SadliyVI/HW_React_Life_Cycle_CRUD/actions/workflows/main.yml)
 
 CRUD-приложение для заметок с HTTP-запросами без перезагрузки страницы.
-> Важно: GitHub Pages хостит только фронтенд. Для работы CRUD нужен локальный backend на `http://localhost:7070`.
+> Важно: В онлайн-демо на GitHub Pages backend по умолчанию недоступен, т.к. `localhost:7070` работает только на локальном компьютере.
+> Для полноценной работы нужно задеплоить backend и указать его адрес в `VITE_API_URL` (см. .env.production),
+> либо запустить backend локально.
 
 ## Возможности
 
